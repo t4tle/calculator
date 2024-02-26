@@ -1,6 +1,7 @@
 import sys
 
-user_input = sys.argv[1]
+#user_input = sys.argv[1]
+user_input = input('Enter the problem:')
 def power(operand):
 
     if operand == '*' or operand == '/':
@@ -17,12 +18,14 @@ def doMath(user_input):
 
     tup = []
     saved_operation = []
+    count = 0
     # 4+3/2
     for x in user_input:
         if x.isdigit():
             tup.append(x)
 
         else:
+            count += 1
             try:
                 c = saved_operation[-1]
 
