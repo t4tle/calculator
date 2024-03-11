@@ -1,5 +1,4 @@
-import sys
-import re
+
 
 
 #user_input = sys.argv[1]
@@ -9,27 +8,24 @@ user_input = input('Enter the problem:')
 def doMath(user_input):
     print('User Input: {}\n'.format(user_input))
     
-
-    
     saved_operation = []
-
+    tup = []
     
-    tup = re.findall('\d+',user_input)
-    saved_operation = tup.copy()
-    count = -1
+    num= []
     for x in user_input:
         if x.isdigit():
-            continue
+            num.append(x)
+                
 
         else:
-            
-            count += 2
-            saved_operation.insert(count,x)
-
-            
+            tup.append(''.join(num))
+            tup.append(x)
+            num.clear()
+    tup.append(''.join(num))        
         
-    print('Ready Input: {}\n'.format(tup))
-    print('Ready operation: {}\n'.format(saved_operation))
+    print('Ready Inputs: {}\n'.format(tup))
+    saved_operation = tup.copy()
+    
    
    
     
