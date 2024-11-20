@@ -9,23 +9,31 @@ def power(operand):
 
     elif operand == '+' or operand == '-': 
         return 3
-    
+
+
 def doMath(user_input):
     print('User Input: {}\n'.format(user_input))
     # 1+1 = 2
     # PREFIX: +11 -> [+, 1, 1] = 2
     # POSTFIX: 11+ -> [1, 1, +] = 2
 
-    tup = []
+    tup = [0]
     saved_operation = []
-    count = 0
+    join = []
+    i = 0
     # 4+3/2
     for x in user_input:
+        
         if x.isdigit():
-            tup.append(x)
+            
+            join.append(x)
+            
 
-        else:
-            count += 1
+        else:          
+            tup[i] = ''.join(join)
+            join.clear()
+            tup.append(0)
+            i += 1
             try:
                 c = saved_operation[-1]
 
@@ -36,8 +44,9 @@ def doMath(user_input):
                     saved_operation.append(c)
             except:
                 saved_operation.append(x)
+            
                 
-    
+    tup[i] = ''.join(join)    
 
     # ['4','3','2','/','+']         
     print('Ready Input: {}\n'.format(tup))
