@@ -1,4 +1,5 @@
-import sys
+
+
 
 #user_input = sys.argv[1]
 user_input = input('Enter the problem:')
@@ -58,17 +59,19 @@ def doMath(user_input):
         
         if operation == '+':
             total = float(operand1) + float(operand2)
-        elif operation == '-':
-            total = float(operand1) - float(operand2)
-        elif operation == '*':
-            total = float(operand1) * float(operand2)
-        elif operation == '/':
-            total = float(operand1) / float(operand2)       
-        tup.insert(0, total)
-        print('Next List: {}'.format(tup))
-    
-    print('\nTotal: {}'.format(tup[0]))
                 
+        elif '-'in saved_operation:
+            p = saved_operation.index('-')
+            operand1 = saved_operation[p-1]
+            operand2 = saved_operation[p+1]
+            total = float(operand1) - float(operand2) 
+        
+        saved_operation.insert(p, total)
+        saved_operation.pop(p+1)
+        saved_operation.pop(p+1)
+        saved_operation.pop(p-1)
+        print('Next List: {}'.format(saved_operation))        
+      
 
 
 
